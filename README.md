@@ -120,6 +120,22 @@ export function Providers({ children, themeProps }: ProvidersProps) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+___________________________________
+___________________________________
 <br><br>
 <br><br>
 
@@ -129,7 +145,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
 
 ## gltf
 
-```
+```javascript
 // ==== ETH LOGO ==== 
 loader.load('3d/eth/scene.gltf', gltf => {
     this.ethereumModel = gltf.scene
@@ -148,5 +164,45 @@ loader.load('3d/eth/scene.gltf', gltf => {
 
     this.cont2.add(this.ethereumModel) // Fügt das Modell der Szene hinzu
 })
-
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+___________________________________
+___________________________________
+<br><br>
+<br><br>
+
+# Templates
+
+## Objects
+- Different objects: https://codepen.io/wakana-k/pen/poBBRmN
