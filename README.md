@@ -135,6 +135,17 @@ loader.load('3d/eth/scene.gltf', gltf => {
     this.ethereumModel = gltf.scene
     this.ethereumModel.scale.set(10, 10, 10) // Skaliert das Modell auf eine angemessene Größe
     this.ethereumModel.position.set(0, 0, 0) // Positioniert das Modell in der Mitte
+
+   // Iteriere über alle Meshes im Modell und ändere deren Materialeigenschaften
+    this.ethereumModel.traverse(node => {
+	if (node.isMesh) {
+	    // Setze das Material auf transparent und ändere die Opazität
+	    node.material.transparent = true
+	    node.material.opacity = 0.2 // Setze die gewünschte Opazität (0.0 bis 1.0)
+	}
+    })
+
+
     this.cont2.add(this.ethereumModel) // Fügt das Modell der Szene hinzu
 })
 
