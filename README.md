@@ -1,6 +1,42 @@
 # three.js-cheat-sheet
 
 
+## 3d Files
+- [gltf](https://www.cgtrader.com/search?free=1&keywords=headphone)
+
+
+
+
+
+
+<br><br>
+___
+___
+
+<br><br>
+
+
+# Create gltf files
+
+<br><br>
+
+## obj to glft
+- https://convert3d.org/obj-to-gltf
+
+<br><br>
+
+## fbx to gltf
+- https://convert3d.org/fbx-to-gltf
+
+
+
+
+
+
+<br><br>
+___
+___
+
 <br><br>
 
 # Init
