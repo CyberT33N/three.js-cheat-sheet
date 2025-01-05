@@ -2,8 +2,8 @@
 
 
 ## 3d Files
-- [gltf](https://www.cgtrader.com/search?free=1&keywords=headphone)
-
+- https://www.cgtrader.com/search?free=1&keywords=
+- https://www.turbosquid.com/Search/3D-Models/free/headphone
 
 <br><br>
 ___
