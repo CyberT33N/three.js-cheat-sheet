@@ -307,6 +307,40 @@ ___
 
 ### MeshBasicMaterial
 
+
+## Parameter-Tabelle
+
+| Parameter            | Typ                              | Beschreibung                                                                                           | Standardwert       | Beispiel                                   |
+|----------------------|-----------------------------------|-------------------------------------------------------------------------------------------------------|--------------------|-------------------------------------------|
+| **color**           | Hexadezimalwert oder THREE.Color | Gibt die Farbe des Materials an.                                                                     | `0xffffff`         | `color: 0xff0000` (Rot)                  |
+| **wireframe**       | Boolean                          | Rendert das Objekt als Drahtgittermodell (nur Kanten sichtbar).                                       | `false`            | `wireframe: true`                        |
+| **transparent**     | Boolean                          | Aktiviert Transparenz, damit die Deckkraft (`opacity`) berücksichtigt wird.                          | `false`            | `transparent: true`                      |
+| **opacity**         | Number                           | Gibt an, wie durchsichtig das Material ist (0 = vollständig transparent, 1 = vollständig undurchsichtig). | `1`                | `opacity: 0.5`                           |
+| **emissive**        | Hexadezimalwert oder THREE.Color | Bestimmt die Eigenleuchtkraft des Materials (wie sehr es "leuchtet").                               | `0x000000`         | `emissive: 0x00ff00` (Grün leuchtend)    |
+| **emissiveIntensity** | Number                          | Stellt die Intensität des Emissionslichts ein.                                                       | `1`                | `emissiveIntensity: 2.0`                 |
+| **side**            | THREE.FrontSide, THREE.BackSide, THREE.DoubleSide | Bestimmt, welche Seiten des Materials gerendert werden.                                              | `THREE.FrontSide`  | `side: THREE.DoubleSide`                 |
+| **vertexColors**    | Boolean                          | Ermöglicht es, Farben von den Vertex-Daten zu beziehen (nützlich für komplexe Geometrien).            | `false`            | `vertexColors: true`                     |
+| **map**             | THREE.Texture                   | Legt eine Textur für die Oberfläche fest.                                                            | `null`             | `map: textureLoader.load('texture.jpg')` |
+| **alphaMap**        | THREE.Texture                   | Legt eine Alpha-Textur fest, um Transparenz mit einer Textur zu steuern.                             | `null`             | `alphaMap: textureLoader.load('alpha.png')` |
+| **envMap**          | THREE.CubeTexture oder THREE.Texture | Ermöglicht die Verwendung von Umgebungsreflexionen.                                                  | `null`             | `envMap: cubeTexture`                    |
+| **fog**             | Boolean                          | Aktiviert Nebel-Effekte.                                                                             | `true`             | `fog: false`                             |
+| **blending**        | THREE.NormalBlending, THREE.AdditiveBlending, etc. | Kontrolliert, wie das Material mit Hintergrundfarben gemischt wird.                                  | `THREE.NormalBlending` | `blending: THREE.AdditiveBlending`   |
+
+---
+
+### Beispiel-Code:
+```javascript
+const wireframeMaterial = new THREE.MeshBasicMaterial({
+    color: 0x42005e, // Dunkelviolett
+    wireframe: true, // Drahtmodell aktivieren
+    transparent: true, // Transparenz aktivieren
+    opacity: 0.8, // 80% Deckkraft
+    emissive: 0x42005e, // Eigenleuchtkraft in Dunkelviolett
+    emissiveIntensity: 1.5 // 1.5-fache Leuchtintensität
+});
+```
+
+
 <br><br>
 
 #### Create wireframe material with neon effect
