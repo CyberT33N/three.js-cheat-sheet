@@ -213,6 +213,17 @@ export function Providers({ children, themeProps }: ProvidersProps) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <br><br>
 <br><br>
 ___________________________________
@@ -254,6 +265,88 @@ loader.load('3d/eth/scene.gltf', gltf => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+___
+___
+
+<br><br>
+
+
+
+
+
+
+
+
+
+
+# API
+
+<br><br>
+
+## Material 
+
+<br><br>
+
+### MeshBasicMaterial
+
+<br><br>
+
+#### Create wireframe material with neon effect
+```javascript
+const wireframeMaterial = new THREE.MeshBasicMaterial({
+    color: 0x42005e,      // Your desired color in hex
+    wireframe: true,      // Enable wireframe mode
+    transparent: true,    // Enable transparency
+    opacity: 0.8,        // Set transparency level
+    emissive: 0x42005e,  // Same color for the glow effect
+    emissiveIntensity: 1.5 // Intensity of the glow
+});
+
+// Apply to your 3D model
+model.traverse(node => {
+    if (node.isMesh) {
+        node.castShadow = true;
+        node.receiveShadow = true;
+        node.material = wireframeMaterial;
+    }
+});
+```
+- Uses MeshBasicMaterial for the neon effect
+- wireframe: true creates the wireframe look
+- emissive and emissiveIntensity create the glow effect
+- transparent and opacity add depth to the neon look
+- Apply to all meshes using traverse
+
+
+
+
+
+
+
+
+<br><br>
+___
+___
+
+<br><br>
 
 
 
