@@ -5,6 +5,19 @@
 - https://www.cgtrader.com/search?free=1&keywords=
 - https://www.turbosquid.com/Search/3D-Models/free/headphone
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <br><br>
 ___
 ___
@@ -12,10 +25,25 @@ ___
 <br><br>
 
 
-# gltf viewer
+# Viewer
+
+## gltf
 - https://gltf-viewer.donmccurdy.com/
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <br><br>
 ___
 ___
@@ -23,17 +51,27 @@ ___
 <br><br>
 
 
-# Create gltf files
+# Converter
+
+
+## GLTF
 
 <br><br>
 
-## obj to glft
+### obj to glft
 - https://convert3d.org/obj-to-gltf
 
 <br><br>
 
-## fbx to gltf
+### fbx to gltf
 - https://convert3d.org/fbx-to-gltf
+
+
+
+
+
+
+
 
 
 
@@ -219,6 +257,109 @@ loader.load('3d/eth/scene.gltf', gltf => {
 
 
 
+
+
+
+
+
+# Draco Kompression für 3D Modelle
+
+<details><summary>Click to expand..</summary>
+
+## Was ist Draco?
+Draco ist eine Open-Source-Bibliothek von Google für die Kompression und Dekompression von 3D-Geometrie-Meshes und Point Clouds. Sie reduziert erheblich die Größe von 3D-Modellen.
+
+## 1. GLTF-Modell komprimieren
+
+```bash
+# Installation des gltf-pipeline Tools
+npm install -g gltf-pipeline
+
+# Komprimierung eines GLTF-Modells mit Draco
+gltf-pipeline -i input.gltf -o model-draco.gltf --draco.compressionLevel=10
+```
+- **Dadurch ist die bin Datei überflüßig, weil es gibt nur noch die gltf Datei**
+
+Kompressionslevels:
+- 1-10 (höher = bessere Kompression, aber längere Verarbeitungszeit)
+- 7 ist der Standardwert
+- 10 ist maximale Kompression
+
+## 2. Integration in Three.js/React Projekt
+
+### Erforderliche Importe
+```javascript
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+```
+
+### Loader Setup
+```javascript
+const loader = new GLTFLoader()
+const dracoLoader = new DRACOLoader()
+
+// Option 1: Verwendung der Google-hosted Decoder (empfohlen)
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/')
+
+// Option 2: Lokale Decoder (erfordert zusätzliche Dateien)
+// dracoLoader.setDecoderPath('/draco/')
+
+loader.setDRACOLoader(dracoLoader)
+```
+
+### Modell laden
+```javascript
+async function loadModel() {
+    const gltf = await loader.loadAsync('path/to/model-draco.gltf')
+    const model = gltf.scene
+    // Weitere Verarbeitung des Modells...
+}
+```
+
+## 3. Vorteile der Draco-Kompression
+
+- Deutlich reduzierte Dateigröße (oft 90% kleiner)
+- Schnellere Ladezeiten
+- Geringerer Bandbreitenverbrauch
+- Bessere Performance für Web-Anwendungen
+
+## 4. Tipps & Tricks
+
+- Verwende die Google-hosted Decoder für einfache Integration
+- Teste verschiedene Kompressionslevel für optimale Balance zwischen Größe und Qualität
+- Komprimiere nur die finalen Modelle, nicht die Arbeitsversionen
+- Behalte die Original-Dateien für spätere Bearbeitungen
+
+## 5. Fehlerbehebung
+
+Häufige Fehler und Lösungen:
+- `No DRACOLoader instance provided`: Stelle sicher, dass der DRACOLoader korrekt initialisiert und dem GLTFLoader zugewiesen wurde
+- `404 for draco_decoder.js`: Bei lokaler Verwendung müssen alle Decoder-Dateien im richtigen Verzeichnis liegen
+- Performance-Probleme: Verwende die Google-hosted Decoder für besseres Caching
+
+## 6. Beispiel-Konfiguration für Three.js
+
+```javascript
+// Vollständiges Beispiel
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+
+const loader = new GLTFLoader()
+const dracoLoader = new DRACOLoader()
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/')
+loader.setDRACOLoader(dracoLoader)
+
+// Modell laden
+const model = await loader.loadAsync('model-draco.gltf')
+scene.add(model.scene)
+```
+
+
+
+
+
+
+</details>
 
 
 
